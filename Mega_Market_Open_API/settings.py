@@ -1,9 +1,27 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = True
+load_dotenv()
 
+DEBUG = os.environ['DEBUG']
+
+SECRET_KEY = os.environ['SECRET_KEY']
+
+DATABASES = {
+    'default': {
+        'ENGINE': os.environ['DB_ENGINE'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT'],
+    }
+}
+
+# raise Exception('KEYS ARE NOT SPECIFIED!')
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -98,10 +116,17 @@ APPEND_SLASH = False
 
 USE_L10N = False
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': 'iso-8601',
 }
-try:
-    from .local_variables import *
-except ImportError:
-    raise Exception('KEYS ARE NOT SPECIFIED!')
