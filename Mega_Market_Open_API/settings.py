@@ -10,6 +10,7 @@ DEBUG = os.environ['DEBUG']
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+# Database
 DATABASES = {
     'default': {
         'ENGINE': os.environ['DB_ENGINE'],
@@ -71,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Mega_Market_Open_API.wsgi.application'
 
-# Database
+
 
 
 # Password validation

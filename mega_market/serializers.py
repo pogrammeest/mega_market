@@ -2,7 +2,7 @@ import math
 import uuid
 
 from rest_framework import serializers
-from mega_market.models import ShopUnit
+from mega_market.models import ShopUnit, LogsShopUnit
 from django.db import transaction
 
 
@@ -188,6 +188,32 @@ class ShopUnitNodesSerializer(serializers.ModelSerializer):
 
 class SalesSerializer(serializers.Serializer):
     items = serializers.ListField(child=ShopUnitSerializer())
+
+    class Meta:
+        fields = ['items']
+
+
+class LogsShopUnitSerializer(serializers.ModelSerializer):
+    type = ChoiceField(choices=ShopUnit.SHOP_UNIT_TYPE)
+    date = serializers.SerializerMethodField()
+    id = serializers.SerializerMethodField()
+
+    @staticmethod
+    def get_date(obj):
+        return obj.date.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+
+    @staticmethod
+    def get_id(obj):
+        return obj.unit_id
+
+    class Meta:
+        model = LogsShopUnit
+        fields = ['id', 'name', 'parentId', 'type', 'date', 'price']
+
+
+
+class SalesSerializer(serializers.Serializer):
+    items = serializers.ListField(child=LogsShopUnitSerializer())
 
     class Meta:
         fields = ['items']
