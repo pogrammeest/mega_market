@@ -169,7 +169,7 @@ class ShopUnitNodesSerializer(serializers.ModelSerializer):
     def get_children(obj):
         if obj.type == 'O':
             return None
-        queryset = ShopUnit.objects.all().filter(parentId=obj.id)
+        queryset = obj.get_children()
         if not queryset:
             return []
         children = ShopUnitNodesSerializer(queryset, many=True)
@@ -212,8 +212,4 @@ class LogsShopUnitSerializer(serializers.ModelSerializer):
 
 
 
-class SalesSerializer(serializers.Serializer):
-    items = serializers.ListField(child=LogsShopUnitSerializer())
 
-    class Meta:
-        fields = ['items']

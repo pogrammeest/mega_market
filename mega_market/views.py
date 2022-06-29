@@ -152,6 +152,11 @@ class ShopUnitViewSet(viewsets.ViewSet):
 
     @action(detail=True, methods=['get'])
     def statistic(self, request, id):
+        try:
+            ShopUnit.objects.get(id=id)
+        except ShopUnit.DoesNotExist:
+            return Response({'code': 404, 'message': 'Item not found'}, status=status.HTTP_404_NOT_FOUND)
+
         if 'dateStart' and 'dateEnd' in request.query_params.keys():
             date_start = request.query_params['dateStart']
             date_end = request.query_params['dateEnd']
