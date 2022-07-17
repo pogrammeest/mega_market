@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-<<<<<<< HEAD
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,14 +24,6 @@ DATABASES = {
 
 # raise Exception('KEYS ARE NOT SPECIFIED!')
 ALLOWED_HOSTS = []
-=======
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
->>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
 
 # Application definition
 
@@ -81,13 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Mega_Market_Open_API.wsgi.application'
 
-<<<<<<< HEAD
-
-=======
-# Database
->>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -120,11 +104,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-<<<<<<< HEAD
 STATIC_URL = 'static/'
 
-=======
->>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -133,7 +114,6 @@ APPEND_SLASH = False
 
 USE_L10N = False
 
-<<<<<<< HEAD
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -141,18 +121,6 @@ STATIC_URL = 'static/'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static"),
 # ]
-=======
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
->>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -160,10 +128,3 @@ MEDIA_URL = '/media/'
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': 'iso-8601',
 }
-<<<<<<< HEAD
-=======
-try:
-    from .local_variables import *
-except ImportError:
-    raise Exception('KEYS ARE NOT SPECIFIED!')
->>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
