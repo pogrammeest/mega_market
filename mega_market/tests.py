@@ -274,7 +274,11 @@ def test_all():
     test_import()
     test_nodes()
     test_sales()
+<<<<<<< HEAD
     test_stats()
+=======
+    # test_stats()
+>>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
     test_delete()
 
 

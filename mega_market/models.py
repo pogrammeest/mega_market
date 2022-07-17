@@ -1,10 +1,9 @@
-import copy
-
-from django.db import models
-from mptt.models import MPTTModel, TreeForeignKey
 import uuid
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
+from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
+import uuid
 
 
 class ShopUnit(MPTTModel):
@@ -14,6 +13,7 @@ class ShopUnit(MPTTModel):
     )
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True)
     name = models.TextField(blank=False, null=False)
+
     date = models.DateTimeField(blank=True, null=True)
     parentId = TreeForeignKey("ShopUnit", null=True, on_delete=models.CASCADE, blank=True, related_name='children')
     type = models.CharField(max_length=1, choices=SHOP_UNIT_TYPE)

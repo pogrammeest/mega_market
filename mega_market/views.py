@@ -7,7 +7,11 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework.response import Response
 from mega_market.serializers import ShopUnitSerializer, ItemsSerializer, ShopUnitNodesSerializer, SalesSerializer
 from rest_framework import status, viewsets
+<<<<<<< HEAD
 from mega_market.models import ShopUnit,LogsShopUnit
+=======
+from mega_market.models import ShopUnit
+>>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
 from rest_framework.decorators import action
 from .examples import *
 
@@ -46,8 +50,13 @@ class ShopUnitViewSet(viewsets.ViewSet):
             serializer.save()
             return Response({'code': 200, 'message': 'Вставка или обновление прошли успешно.'},
                             status=status.HTTP_200_OK)
+<<<<<<< HEAD
         # print(serializer.data)
         # print(serializer.errors)
+=======
+        print(serializer.data)
+        print(serializer.errors)
+>>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
         return Response({'code': 400, 'message': 'Validation Failed'}, status=status.HTTP_400_BAD_REQUEST)
 
     @swagger_auto_schema(
@@ -149,6 +158,7 @@ class ShopUnitViewSet(viewsets.ViewSet):
                 serializer = SalesSerializer({'items': query_set})
                 return Response(serializer.data)
         return Response({'code': 400, 'message': 'Validation Failed'}, status=status.HTTP_400_BAD_REQUEST)
+<<<<<<< HEAD
 
     @action(detail=True, methods=['get'])
     def statistic(self, request, id):
@@ -173,3 +183,5 @@ class ShopUnitViewSet(viewsets.ViewSet):
             query_set = LogsShopUnit.objects.filter(unit_id=id)
             serializer = SalesSerializer({'items': query_set})
             return Response(serializer.data)
+=======
+>>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca

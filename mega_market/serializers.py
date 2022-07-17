@@ -2,7 +2,11 @@ import math
 import uuid
 
 from rest_framework import serializers
+<<<<<<< HEAD
 from mega_market.models import ShopUnit, LogsShopUnit
+=======
+from mega_market.models import ShopUnit
+>>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
 from django.db import transaction
 
 
@@ -169,7 +173,11 @@ class ShopUnitNodesSerializer(serializers.ModelSerializer):
     def get_children(obj):
         if obj.type == 'O':
             return None
+<<<<<<< HEAD
         queryset = obj.get_children()
+=======
+        queryset = ShopUnit.objects.all().filter(parentId=obj.id)
+>>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
         if not queryset:
             return []
         children = ShopUnitNodesSerializer(queryset, many=True)
@@ -191,6 +199,7 @@ class SalesSerializer(serializers.Serializer):
 
     class Meta:
         fields = ['items']
+<<<<<<< HEAD
 
 
 class LogsShopUnitSerializer(serializers.ModelSerializer):
@@ -209,3 +218,5 @@ class LogsShopUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = LogsShopUnit
         fields = ['id', 'name', 'parentId', 'type', 'date', 'price']
+=======
+>>>>>>> 245dbcc359be52adecc83ec1af83f3e4ada97bca
