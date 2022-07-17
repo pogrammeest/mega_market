@@ -209,7 +209,3 @@ class LogsShopUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = LogsShopUnit
         fields = ['id', 'name', 'parentId', 'type', 'date', 'price']
-
-
-
-
